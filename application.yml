@@ -2,9 +2,8 @@
 #  port: 3344
 # 必须保存为 uft-8 格式
 spring:
-  profiles: none # 空配置
+  profiles:  # 空配置
   active:
-   - dev
 
 ---
 spring:
