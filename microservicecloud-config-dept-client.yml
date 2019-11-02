@@ -1,7 +1,7 @@
 # 必须保存为 uft-8 格式
+# spring dev环境配置
 server:
   port: 8001
-# spring 配置
 spring:
   profiles: dev # 测试环境
   application:
@@ -11,6 +11,54 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver                # 数据库驱动包
     # 数据库URI
     url: jdbc:mysql://192.168.220.132:3306/cloudDB01
+    #url: jdbc:mysql://192.168.220.132:3306/cloudDB01?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123.comCOM
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 8                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+# mybatis 配置
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+  type-aliases-package: com.soft.entities                   # 所有Entity别名类所在包
+  mapper-locations: classpath:mybatis/mapper/**/*.xml       # mapper XML映射文件
+# eureka 配置
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+      #defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001:7001/eureka/,http://eureka7002:7002/eureka/
+  instance:
+    # eureka微服务中 主机 status 显示的名称
+    instance-id: microservicecloud-dept8001
+    prefer-ip-address: true     #访问路径可以显示IP地址
+# info 信息
+info:
+  app:
+    name: soft-microservicecloud
+  company:
+    name: www.soft.com
+  build:
+    artifactId: $project.artifactId$
+    version: $project.version$
+    
+    
+    
+---
+# spring  test环境配置
+server:
+  port: 8001
+spring:
+  profiles: test # 测试环境
+  application:
+    name: microservicecloud-config-dept-client # 同一个微服务多台主机组成集群，则名称必须统一
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: com.mysql.jdbc.Driver                # 数据库驱动包
+    # 数据库URI
+    url: jdbc:mysql://192.168.220.132:3306/cloudDB02
     #url: jdbc:mysql://192.168.220.132:3306/cloudDB01?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123.comCOM
