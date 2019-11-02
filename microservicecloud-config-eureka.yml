@@ -4,7 +4,7 @@ server:
 spring:
   profiles: dev # 测试环境
   application:
-    name: microservicecloud-config-eureka-client
+    name: microservicecloud-config-eureka
 eureka:
   server:
     enable-self-preservation: false # 关闭 eureka 自我保护机制
