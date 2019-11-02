@@ -1,0 +1,17 @@
+#server:
+#  port: 3344
+# 必须保存为 uft-8 格式
+spring:
+  profiles:  # 空配置
+  active:
+
+---
+spring:
+  profiles: test # 测试环境
+  application:
+    name:  microservicecloud-config
+---
+spring:
+  profiles: test # 测试环境
+  application:
+    name:  microservicecloud-config

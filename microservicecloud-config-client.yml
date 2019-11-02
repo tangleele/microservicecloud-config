@@ -1,0 +1,31 @@
+
+# 必须保存为 uft-8 格式
+spring:
+  profiles:  # 空配置
+  active:
+
+---
+server:
+  port: 8201
+spring:
+  profiles: dev # 测试环境
+  application:
+    name:  microservicecloud-config-client
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka7001:7001/eureka/,http://eureka7002:7002/eureka/
+      
+---
+server:
+  port: 8202
+spring:
+  profiles: test # 测试环境
+  application:
+    name:  microservicecloud-config-client
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka7001:7001/eureka/,http://eureka7002:7002/eureka/
